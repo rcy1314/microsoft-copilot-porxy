@@ -1,11 +1,11 @@
-# microsoft-copilot-porxy
+# microsoft-copilot-play
 ## 简介
 
-**Cloudflare Worker 的 Microsoft Copilot 代理。**
+**Cloudflare Worker 的 Microsoft Copilot 加速服务。**
 
 **Microsoft Copilot 是基于 OpenAI GPT-4 的强大 AI 并且能够使用 Bing 搜索来解答问题。**
 
-**简单部署即可在国内轻松使用原滋原味的 Microsoft Copilot 的几乎全部功能，聊天，笔记本，插件，图像生成，分享等等..**
+**简单部署即可在国内高速使用原滋原味的 Microsoft Copilot 的几乎全部功能，聊天，笔记本，插件，图像生成，分享等等..**
 
 
 ![335075014-0ca073cb-f6b8-47ff-befd-8876399a2b3e](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/7d7b54f0-1298-4094-9764-156eb77ad709)
@@ -16,7 +16,7 @@
 
 
 ## 亮点
-- 🎉可在国内直接使用
+- 🎉可在国内高速访问
 - 🚀cloudflare worker一件部署无需其他操作，完全免费无限制
 - ⚡高速访问，cloudflare是全球最大的CDN
 
@@ -33,15 +33,15 @@
 
 > [!CAUTION]
 > **重要的安全使用法则**
-> 1. 不要轻易在代理站输入自己的账号和密码，**站点部署者可以轻易得到你的账号密码！**
-> 2. 请保证，只在信任的代理站使用密码登录！
+> 1. 不要轻易在加速站输入自己的账号和密码，**站点部署者可以轻易得到你的账号密码！**
+> 2. 请保证，只在信任的加速站使用密码登录！
 > 3. 输入密码前一定要确认代理站域名是你信任的域名！
-> 4. 如果一定要在不信任的代理站登录，可以使用邮件验证码或者Authenticator登录。
-> 5. 使用完不信任的代理站后，第一时间退出登录。
-> 6. 如果已经在不信任的代理站使用密码登录过，请立即修改微软账号密码。
+> 4. 如果一定要在不信任的加速站登录，可以使用邮件验证码或者Authenticator登录。
+> 5. 使用完不信任的加速站后，第一时间退出登录。
+> 6. 如果已经在不信任的加速站使用密码登录过，请立即修改微软账号密码。
 
 > [!TIP]
-> **如果你需要经常使用，建议自己部署代理站，这样是最安全的选择。**
+> **如果你需要经常使用，建议自己部署加速站，这样是最安全的选择。**
 
 > [!TIP]
 > **我部署的演示站不会保存任何信息，如果你信任我，那么演示站也是不错的选择。**
@@ -84,21 +84,54 @@ console.log(`((c)=>c.split(/; ?/).map((t)=>{const index = t.indexOf("=");return 
 ```
 ![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/f9a0c93d-a4d8-4a78-b2d9-7809218bb0c5)
 
-- 3.打开自己部署的代理网站，按F12执行刚才复制的脚本。
+- 3.打开自己部署的加速网站，按F12执行刚才复制的脚本。
 
 ![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/c95d6e30-f941-4290-9901-d98b6b7b5bbb)
 
-- 4.刷新自己部署的代理网站，登录成功！
+- 4.刷新自己部署的加速网站，登录成功！
 
 ![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/6f61f8c7-af65-4155-82bc-c868b264e9e9)
 
 </details>
 
+## CloudFlare Pages 部署
+<details>
+<summary>详细教学，点击展开</summary>
+
+1.Fork此仓库
+
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/d61bf46d-7edf-43de-b66c-ede1f8cefed2)
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/3a4be71a-bd12-4938-add8-00998c5ca0aa)
+
+2. Page连接到GitHub
+
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/598dd9c8-05d9-46dc-9c9b-a15da56ff0b5)
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/85286d7c-913e-4550-b867-344e537077b6)
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/c118fe5b-1684-40f5-9b5a-b719d22e17be)
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/78ffc287-f472-4758-8df1-2f14aa5a70a4)
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/cd63bb70-6e6d-435f-8691-0f7734e88605)
+
+3. 设置设置仓库
+
+输入构建命令
+``` shell
+npm run build-page
+```
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/02fbfe54-f760-4a02-9946-e57ca3ecb648)
+
+之后就完成了。
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/ce012d84-7df9-426b-877e-42e6fe77872e)
 
 
+4. 后续更新
+
+同步 github 仓库后 Workers 和 Pages 会自动同步更新。
+
+![image](https://github.com/jianjianai/microsoft-copilot-porxy/assets/59829816/f26b3753-0963-4a78-8773-7a9b6ebc1199)
+</details>
 
 
-## 部署
+## CloudFlare Worker 部署
 ### 自动部署 (不熟悉开发流程的小伙伴推荐)
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/jianjianai/microsoft-copilot-porxy)
 <details>
@@ -193,6 +226,7 @@ console.log(`((c)=>c.split(/; ?/).map((t)=>{const index = t.indexOf("=");return 
 ### 环境
 |名称|下载地址|
 |-|-|
+|wget|```apt install wget```|
 |git|https://git-scm.com/download|
 |nodejs|https://nodejs.org|
 
@@ -217,6 +251,15 @@ npm run deploy
 
 </details>
 
+
+## 环境变量
+|名称|作用|
+|---|---|
+|```BYPASS_SERVER```|如果为空或者没配置则使用内置pass服务通过验证，如果配置了则使用配置的pass服务器通过验证。本项目将 [Harry-zklcdc/go-bingai-pass](Harry-zklcdc/go-bingai-pass) 打包在一起一键部署，一般情况下此环境变量无需配置。|
+
+
+## 鸣谢
+- 通过机器验证认证使用隔壁 [Harry-zklcdc/go-proxy-bingai](go-proxy-bingai ) 同款技术 [Harry-zklcdc/go-bingai-pass](Harry-zklcdc/go-bingai-pass)。 感谢 [Harry-zklcdc](https://github.com/Harry-zklcdc) 大佬的付出。
 
 
 ## 交流社区
