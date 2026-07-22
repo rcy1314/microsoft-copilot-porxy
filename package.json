@@ -3,15 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "deploy": "wrangler deploy",
+    "deploy": "npm run build-worker && wrangler deploy",
     "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "cf-typegen": "wrangler types",
-    "iptest":"npx tsc ./iptest/iiptest.ts && node ./iptest/iiptest.js"
+    "build-worker": "rollup --config rollup.config.workers.mjs",
+    "build-page": "rollup --config rollup.config.pages.mjs",
+    "iptest": "npx tsc ./iptest/iiptest.ts && node ./iptest/iiptest.js"
   },
   "devDependencies": {
+    "@ampproject/rollup-plugin-closure-compiler": "^0.27.0",
     "@cloudflare/vitest-pool-workers": "^0.1.0",
     "@cloudflare/workers-types": "^4.20240524.0",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup": "^4.18.0",
+    "rollup-plugin-html": "^0.2.1",
     "typescript": "^5.0.4",
     "wrangler": "^3.0.0"
   }
